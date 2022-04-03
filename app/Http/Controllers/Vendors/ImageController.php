@@ -16,13 +16,12 @@ class ImageController extends Controller
         try {
             $products = Product::where('vendor_id', auth()->id())->get();
             foreach ($products as $key => $prod) {
-                $images = Image::where('product_id', $prod->id)->paginate(5);
+                // $images = Image::where('product_id', $prod->id)->paginate(5);
+                $images = Image::where('vendor_id', auth()->id())->paginate(5);
             }
-
-            // dd($products);
             return view($this->route . '.index', compact('images', 'products'));
         } catch (Exception $e) {
-            return $e;
+            return view('vendors.error.error');
         }
 
         // return 'Please Add Image';

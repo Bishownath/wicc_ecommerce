@@ -20,34 +20,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($images)
-                        @foreach ($images as $key => $img)
-                            <tr>
-                                <td>{{ ++$key }}</td>
-                                <td><a
-                                        href="{{ route('vendors.product.show', $img->product->slug) }}">{{ $img->product->name }}</a>
-                                </td>
-                                <td>
-                                    @if ($files = $img)
-                                        <img src="{{ asset('images/product/' . $img->images) }}" alt="" width="100px"
-                                            height="100px">
-                                    @else
-                                        <p>No Image</p>
-                                    @endif
-                                </td>
-                                <td>{{ $img->status }}</td>
-                                <td>
-                                    <form action="{{ route('vendors.image.destroy', $img->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <h2>No Images </h2>
-                    @endif
+                    @foreach ($images as $key => $img)
+                        <tr>
+                            <td>{{ ++$key }}</td>
+                            <td><a
+                                    href="{{ route('vendors.product.show', $img->product->slug) }}">{{ $img->product->name }}</a>
+                            </td>
+                            <td>
+                                <img src="{{ asset('/images/product/' . $img->images) }}" width="100px" height="100px">
+                            </td>
+                            <td>{{ $img->status }}</td>
+                            <td>
+                                <form action="{{ route('vendors.image.destroy', $img->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
             {{ $images->links() }}

@@ -17,19 +17,13 @@
 
 </div>
 
-<div class="col-md-12">
-    <div class="row">
 
-        <div class="col-md-6">
+<div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" placeholder="Password" id="password" name="password">
+    {{-- {!! Form::password('password', null, ['class' => 'form-control', 'placeholder' => 'Password', 'id' => 'password']) !!} --}}
+    @if ($errors->has('password'))
+        <div class="errors text-danger">**{{ $errors->first('password') }}**</div>
+    @endif
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                {!! Form::password('password', null, ['class' => 'form-control', 'placeholder' => 'Password', 'id' => 'password']) !!}
-                @if ($errors->has('password'))
-                    <div class="errors text-danger">**{{ $errors->first('password') }}**</div>
-                @endif
-
-            </div>
-        </div>
-    </div>
 </div>

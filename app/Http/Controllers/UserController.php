@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\UpdateRequest;
 use App\Http\Requests\Vendor\StoreRequest;
 use App\Models\User;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -15,8 +17,8 @@ class UserController extends Controller
     }
     public function index()
     {
-        $users = Vendor::latest()->paginate(5);
-        return view('user.index', compact('users'));
+        $vendors = Vendor::latest()->paginate(5);
+        return view('user.index', compact('vendors'));
     }
 
     /**
@@ -40,55 +42,56 @@ class UserController extends Controller
         Vendor::create($request->data());
 
         return redirect()
-            ->route('user.index')
+            ->route('vendor.index')
             ->withSuccess('Created Successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $vendor
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Vendor $vendor)
     {
-        return view('user.show', compact('user'));
+        return view('user.show', compact('vendor'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $vendor
      * @return \Illuminate\Http\Response
      */
-    public function edit(user $user)
+    public function edit(Vendor $vendor)
     {
-        return view('user.edit', compact('user'));
+        return view('user.edit', compact('vendor'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $vendor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateRequest $request, Vendor $vendor)
     {
-        $user->update($request->data());
-        return redirect()->route('user.index')->withSuccess('Updated Successfully');
+        $vendor->update($request->data());
+        Alert::toast('Updated Successfully');
+        return redirect()->route('vendor.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $vendor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Vendor $vendor)
     {
-        if ($user->exists()) {
-            $user->delete();
+        if ($vendor->exists()) {
+            $vendor->delete();
         }
         return redirect()
             ->back()

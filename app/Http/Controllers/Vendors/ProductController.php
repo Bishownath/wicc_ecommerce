@@ -63,6 +63,7 @@ class ProductController extends Controller
                     $file->move('images/product', $filename);
 
                     Image::create([
+                        'vendor_id' => auth()->id(),
                         'product_id' => $product->id,
                         'image' => $filename,
                     ]);

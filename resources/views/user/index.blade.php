@@ -6,7 +6,7 @@
             Vendors
         </div>
         <div class="card-body">
-            @if ($users->count())
+            @if ($vendors->count())
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -18,16 +18,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $key => $user)
+                        @foreach ($vendors as $key => $vendor)
                             <tr>
                                 <td>{{ ++$key }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $vendor->name }}</td>
+                                <td>{{ $vendor->email }}</td>
                                 <td>
-                                    <a href="" class="btn btn-info"><i class="fa fa-pen"></i></a>
+                                    <a href="{{ route('vendor.edit', $vendor->id) }}" class="btn btn-info"><i
+                                            class="fa fa-pen"></i></a>
                                 </td>
                                 <td>
-                                    <form action="{{ route('user.destroy', $user->id) }}">
+                                    <form action="{{ route('vendor.destroy', $vendor->id) }}">
                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>

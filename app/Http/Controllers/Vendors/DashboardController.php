@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $product = Product::where('vendor_id', auth()->id())->first();
+        $product = Product::where('vendor_id', auth()->id())->count();
         $image = Image::get();
         return view('vendors.layouts.dashboard', compact('product', 'image'));
     }

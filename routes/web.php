@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth', 'isAdmin', 'prefix' => 'admin'],  function
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('/dashboard', [UserController::class, 'adminDashboard'])->name('admin.dashboard')->middleware('isAdmin');
-    Route::resource('/user', UserController::class);
+    Route::resource('/vendor', UserController::class);
 
     // category resource controller
     Route::resource('/category', CategoryController::class);

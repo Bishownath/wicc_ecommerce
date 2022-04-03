@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Vendor',
             'email' => 'vendor@email.com',
             'password' => Hash::make('password'),
+            'status' => 1,
         ]);
 
         Category::factory(10)->create()->each(function ($cat) {
