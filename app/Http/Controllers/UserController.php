@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function adminDashboard()
     {
-        return view('admin.dashboard');
+        return view('admin.index');
     }
     public function index()
     {

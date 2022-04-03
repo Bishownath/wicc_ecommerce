@@ -56,15 +56,15 @@ class ProductController extends Controller
     {
         $product = Product::create($request->data());
 
-        if (request()->hasFile('images')) {
-            if ($files = request()->file('images')) {
+        if (request()->hasFile('image')) {
+            if ($files = request()->file('image')) {
                 foreach ($files as $key => $file) {
                     $filename = time() . Str::random(10) . '.' . $file->getClientOriginalExtension();
                     $file->move('images/product', $filename);
 
                     Image::create([
                         'product_id' => $product->id,
-                        'images' => $filename,
+                        'image' => $filename,
                     ]);
                 }
             }
@@ -125,15 +125,16 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        foreach ($product->images() as $key => $prod) {
-            $filePath = ('/images/product/' . $prod->images);
-            if (File::exists($filePath)) {
-                // dd($filePath);
-                unlink($filePath);
+
+        foreach ($product->images as  $prod) {
+            $filepath = ("/images/product/" . $prod->image);
+            if (file_exists($filepath)) {
+                unlink($filepath);
             }
+            // $prod->image->detach();
         }
-        // ToDo delete product image from folder
         $product->delete();
+        // ToDo delete product image from folder
         Alert::toast('Deleted Successfully');
         return redirect()
             ->back();

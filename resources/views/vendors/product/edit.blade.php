@@ -33,10 +33,9 @@
         </div>
         Uploaded Images: <br>
         @foreach ($product->images as $prod)
-            @if ($prod->images)
-                {{-- @dd($prod->images) --}}
-                <img src="{{ asset('images/product/' . $prod->images) }}"
-                    alt="{{ asset('images/product/' . $prod->images) }}" height="100px" width="100px">
+            @if ($prod->image)
+                <img src="{{ asset('images/product/' . $prod->image) }}"
+                    alt="{{ asset('images/product/' . $prod->image) }}" height="100px" width="100px">
             @endif
         @endforeach
     </div>

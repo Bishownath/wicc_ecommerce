@@ -23,7 +23,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="images">Choose Image</label>
-                    <input type="file" name="images[]" id="images" class="form-control" multiple />
+                    <input type="file" name="image[]" id="images" class="form-control" multiple />
                 </div>
             </div>
 

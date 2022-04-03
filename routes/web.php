@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
@@ -27,17 +28,19 @@ Auth::routes();
 
 // Auth::routes(['register' => false]);
 
-Route::group(['middleware' => 'auth', 'isAdmin'],  function () {
+Route::group(['middleware' => 'auth', 'isAdmin', 'prefix' => 'admin'],  function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::get('/admin/dashboard', [UserController::class, 'index'])->name('admin.dashboard')->middleware('isAdmin');
-    Route::resource('/admin/user', UserController::class);
+    Route::get('/dashboard', [UserController::class, 'adminDashboard'])->name('admin.dashboard')->middleware('isAdmin');
+    Route::resource('/user', UserController::class);
 
     // category resource controller
-    Route::resource('/admin/category', CategoryController::class);
+    Route::resource('/category', CategoryController::class);
 
     // product controller resource
-    Route::resource('/admin/product', ProductController::class);
+    Route::resource('/product', ProductController::class);
 
-    Route::resource('/admin/image', ImageController::class);
+    Route::resource('/image', ImageController::class);
+
+    Route::resource('/brand', BrandController::class);
 });

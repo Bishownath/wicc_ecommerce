@@ -18,7 +18,7 @@
         <div class="card-body">
             <div class="d-flex m-2">
                 @foreach ($images as $img)
-                    <img src="{{ asset('images/product/' . $img->images) }}" alt="" width="100px" height="100px">
+                    <img src="{{ asset('images/product/' . $img->image) }}" alt="" width="100px" height="100px">
                 @endforeach
             </div>
         </div>

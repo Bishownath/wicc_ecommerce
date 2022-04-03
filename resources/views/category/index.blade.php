@@ -34,7 +34,7 @@
                                     </a>
                                 </td>
                                 <td>{{ $category->description }}</td>
-                                <td>{{ $category->status }}</td>
+                                <td>{{ $category->status == 1 ? 'available' : 'unavailable' }}</td>
 
                                 <td><a href="{{ route('category.edit', $category->slug) }}" class="btn btn-info">Edit</a>
                                 </td>

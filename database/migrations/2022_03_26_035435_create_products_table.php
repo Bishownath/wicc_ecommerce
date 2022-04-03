@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('vendor_id')->nullable();
-            $table->unsignedBigInteger('tag_id')->nullable();
+            $table->integer('tag_id')->nullable();
             $table->string('name');
             $table->string('slug')->unique()->nullable();
             $table->text('description');
@@ -28,7 +28,6 @@ class CreateProductsTable extends Migration
             $table->timestamps();
 
 
-            $table->foreign('tag_id')->references('id')->on('tags');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('vendor_id')->references('id')->on('vendors')->onDelete('set null');
         });

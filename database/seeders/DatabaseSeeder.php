@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
@@ -35,5 +36,6 @@ class DatabaseSeeder extends Seeder
         });
 
         Tag::factory(5)->create();
+        Brand::factory(6)->create();
     }
 }

@@ -66,16 +66,16 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#tags" aria-expanded="true"
-                aria-controls="tags">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#brands" aria-expanded="true"
+                aria-controls="brands">
                 <i class="fas fa-fw fa-tag"></i>
-                <span>Tags</span>
+                <span>Brands</span>
             </a>
-            <div id="tags" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="brands" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Lists:</h6>
-                    <a class="collapse-item" href="{{ route('user.create') }}">Add Tags</a>
-                    <a class="collapse-item" href="{{ route('user.index') }}">Manage Tags</a>
+                    <a class="collapse-item" href="{{ route('brand.create') }}">Add Brand</a>
+                    <a class="collapse-item" href="{{ route('brand.index') }}">Manage Brand</a>
                 </div>
             </div>
         </li>
