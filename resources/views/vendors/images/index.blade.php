@@ -26,8 +26,13 @@
                             <td><a
                                     href="{{ route('vendors.product.show', $img->product->slug) }}">{{ $img->product->name }}</a>
                             </td>
-                            <td>
+                            {{-- <td>
                                 <img src="{{ asset('/images/product/' . $img->images) }}" width="100px" height="100px">
+                            </td> --}}
+                            <td>
+                                {{-- @dd($img) --}}
+                                <img src="{{ asset('images/product/' . $img->image) }}" alt="" width="100px"
+                                    height="100px">
                             </td>
                             <td>{{ $img->status }}</td>
                             <td>

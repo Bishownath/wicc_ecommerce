@@ -25,8 +25,8 @@
                             <td>{{ $img->product->name }}</td>
                             <td>
                                 @if ($files = $img)
-                                    <img src="{{ asset('images/product/' . $img->images) }}"
-                                        alt="{{ asset('images/product/' . $img->images) }}" width="100px" height="100px">
+                                    <img src="{{ asset('images/product/' . $img->image) }}"
+                                        alt="{{ asset('images/product/' . $img->image) }}" width="100px" height="100px">
                                 @else
                                     <p>No Image</p>
                                 @endif

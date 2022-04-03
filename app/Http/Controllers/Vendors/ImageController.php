@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Product;
 use Exception;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ImageController extends Controller
 {
@@ -32,6 +33,7 @@ class ImageController extends Controller
     {
         $img = $image->whereId($image->id);
         $img->delete();
-        return redirect()->back()->withSuccess('Image Deleted Successfully');
+        Alert::toast('Product Image Deleted');
+        return redirect()->back();
     }
 }

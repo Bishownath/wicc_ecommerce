@@ -31,7 +31,7 @@
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Product Images</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    {{ $image->count() }}</div>
+                                    {{ $image }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-image fa-2x text-gray-300"></i>

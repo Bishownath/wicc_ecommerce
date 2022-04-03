@@ -4,6 +4,7 @@
     <div class="card">
         <div class="card-header">
             Brand List
+            <a href="{{ route('brand.create') }}" class="btn btn-info float-right"><i class="fa fa-edit"></i></a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -22,7 +23,7 @@
                             <td>{{ ++$key }}</td>
                             <td>{{ $brand->name }}</td>
                             <td>{{ $brand->description }}</td>
-                            <td><img src="{{ asset('images/brands/' . $brand->image) }}" alt="" width="100px"
+                            <td><img src="{{ asset('/images/brands/' . $brand->image) }}" alt="" width="100px"
                                     height="100px"></td>
                             <td><a href="{{ route('brand.edit', $brand->slug) }}" class="btn btn-success"><i
                                         class="fa fa-pen"></i></a></td>

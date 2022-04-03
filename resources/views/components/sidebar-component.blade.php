@@ -45,7 +45,7 @@
         {{-- cat nav end --}}
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#productCollapse"
                 aria-expanded="true" aria-controls="productCollapse">
                 <i class="fas fa-fw fa-history"></i>
@@ -60,7 +60,7 @@
                     <a class="collapse-item" href="{{ route('image.index') }}">Product Images</a>
                 </div>
             </div>
-        </li>
+        </li> --}}
         {{-- product nav end --}}
 
 
@@ -94,7 +94,7 @@
                     <h6 class="collapse-header">Lists:</h6>
                     <a class="collapse-item" href="{{ route('vendor.create') }}">Add Vendor</a>
                     <a class="collapse-item" href="{{ route('vendor.index') }}">Manage Vendors</a>
-                    <a class="collapse-item" href="{{ route('vendor.index') }}">Applied Vendors</a>
+                    <a class="collapse-item" href="{{ route('vendors.appliedVendor') }}">Applied Vendors</a>
                 </div>
             </div>
         </li>

@@ -5,8 +5,8 @@
         <div class="card-header text-center">
             <div>
                 <h2>Categories</h2>
-                <a href="{{ route('category.create') }}" class="btn btn-primary btn-sm float-right"><i
-                        class="fa fa-plus"></i>Create</a>
+                <a href="{{ route('category.create') }}" class="btn btn-info float-right"><i class="fa fa-edit"></i></a>
+
             </div>
         </div>
         @if ($categories->count())

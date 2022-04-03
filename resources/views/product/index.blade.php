@@ -4,8 +4,7 @@
     <div class="card">
         <div class="card-header">
             <h3 class="text-center">Product</h3>
-            <a href="{{ route('product.create') }}" class="btn btn-info float-right"><i class="fa fa-plus mr-1"></i>Create
-                Product</a>
+            <a href="{{ route('product.create') }}" class="btn btn-info float-right"><i class="fa fa-edit"></i></a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -33,13 +32,14 @@
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->status }}</td>
                             <td>
-                                <a href="{{ route('product.edit', $product->slug) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('product.edit', $product->slug) }}" class="btn btn-info"><i
+                                        class="fa fa-pen"></i></a>
                             </td>
                             <td>
                                 <form action="{{ route('product.destroy', $product->slug) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

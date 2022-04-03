@@ -11,13 +11,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
-    public function adminDashboard()
-    {
-        return view('admin.index');
-    }
+
     public function index()
     {
-        $vendors = Vendor::latest()->paginate(5);
+        $vendors = Vendor::where('status', 1)->latest()->paginate(5);
         return view('user.index', compact('vendors'));
     }
 
@@ -98,5 +95,41 @@ class UserController extends Controller
             ->with([
                 'success' => 'Deleted Successfully'
             ]);
+    }
+
+    public function vendorApply()
+    {
+        // return 'vendor apply';
+        return view('frontend.vendorApply.apply');
+    }
+
+    public function vendorApplied(StoreRequest $request)
+    {
+        // return 'vendor applied';
+        Vendor::create($request->data());
+        Alert::toast('Requested Successfully');
+        return redirect()->back();
+    }
+
+    public function changeStatus($id)
+    {
+        $vendor = Vendor::findOrFail($id);
+        // dd($vendor);
+        if ($vendor->status == 0) {
+            $vendor->status = 1;
+            $vendor->save();
+        } else {
+            $vendor->status = 0;
+            $vendor->save();
+        }
+        // return $vendor->status;
+        Alert::toast('Status Changed');
+        return redirect()->back();
+    }
+
+    public function appliedVendor()
+    {
+        $vendors = Vendor::where('status', 0)->paginate(5);
+        return view('user.appliedVendor', compact('vendors'));
     }
 }

@@ -76,7 +76,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        return view('brands.edit', compact('brand'));
     }
 
     /**
@@ -88,7 +88,9 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        //
+        $brand->update($request->data());
+        Alert::toast('Updated Successfully');
+        return redirect()->route('brand.index');
     }
 
     /**
@@ -99,6 +101,14 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        if ($brand->exists) {
+            $filepath = 'images/brands/' . $brand->image;
+            if ($filepath) {
+                unlink($filepath);
+            }
+            $brand->delete();
+        }
+        Alert::toast('Deleted Successfully');
+        return redirect()->back();
     }
 }

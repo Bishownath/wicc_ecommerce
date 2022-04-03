@@ -294,20 +294,15 @@
                                 <li><a href="faq.html">faqs</a></li>
                                 <li><a href="offer.html">offers</a></li>
                                 <li><a href="profile.html">my profile</a></li>
-                                <li><a href="wallet.html">my wallet</a></li>
-                                <li><a href="about.html">about us</a></li>
-                                <li><a href="contact.html">contact us</a></li>
-                                <li><a href="privacy.html">privacy policy</a></li>
-                                <li><a href="coming-soon.html">coming soon</a></li>
-                                <li><a href="blank-page.html">blank page</a></li>
-                                <li><a href="error.html">404 Error</a></li>
-                                <li><a href="email-template.html">email template</a></li>
+                                <li><a href="{{ route('vendors.apply') }}">Vendor Apply</a></li>
+
                             </ul>
                         </li>
                         <li class="navbar-item dropdown">
                             <a class="navbar-link dropdown-arrow" href="#">authentic</a>
                             <ul class="dropdown-position-list">
                                 <li><a href="{{ route('login') }}">login</a></li>
+                                <li><a href="{{ route('vendors.login') }}">vendor login</a></li>
                                 <li><a href="register.html">register</a></li>
                                 <li><a href="reset-password.html">reset password</a></li>
                                 <li><a href="change-password.html">change password</a></li>

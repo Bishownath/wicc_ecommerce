@@ -27,6 +27,7 @@ class StoreRequest extends BaseRequest
             'name' => $this->input('name'),
             'email' => $this->input('email'),
             'password' => Hash::make($this->input('password')),
+            'description' => $this->input('description'),
         ];
     }
 }
