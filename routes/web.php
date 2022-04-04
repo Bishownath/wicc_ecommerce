@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -21,17 +22,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.frontend');
-});
+// Route::get('/', function () {
+//     return view('frontend.frontend');
+// });
 
+// Route::get('/', [FrontendController::class, 'mainPage'])->name('mainPage');
 Auth::routes();
 
+// frontend routes
 // Auth::routes(['register' => false]);
 Route::get('/vendor/apply', [UserController::class, 'vendorApply'])->name('vendors.apply');
 Route::post('/vendor/apply', [UserController::class, 'vendorApplied'])->name('vendors.applied');
 Route::post('/vendor/changeStatus/{id}', [UserController::class, 'changeStatus'])->name('vendor.changeStatus');
 Route::get('/vendor/appliedVendor', [UserController::class, 'appliedVendor'])->name('vendors.appliedVendor');
+
+Route::get('/', [FrontendController::class, 'main'])->name('mainPage');
+
 
 Route::group(['middleware' => 'auth', 'isAdmin', 'prefix' => 'admin'],  function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

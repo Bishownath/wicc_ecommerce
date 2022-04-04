@@ -71,10 +71,10 @@
             <div class="col-lg-12">
                 <div class="navbar-content">
                     <ul class="navbar-list">
-                        <li class="navbar-item dropdown">
-                            <a class="navbar-link dropdown-arrow" href="{{ route('/') }}">home</a>
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="{{ url('/') }}">home</a>
                         </li>
-                        <li class="navbar-item dropdown-megamenu">
+                        {{-- <li class="navbar-item dropdown-megamenu">
                             <a class="navbar-link dropdown-arrow" href="#">shop</a>
                             <div class="megamenu">
                                 <div class="container">
@@ -151,7 +151,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
                         <li class="navbar-item dropdown-megamenu">
                             <a class="navbar-link dropdown-arrow" href="#">category</a>
                             <div class="megamenu">
@@ -159,17 +159,18 @@
                                     <div class="row row-cols-5">
                                         <div class="col">
                                             <div class="megamenu-wrap">
-                                                <h5 class="megamenu-title">vegetables</h5>
-                                                <ul class="megamenu-list">
-                                                    <li><a href="#">carrot</a></li>
-                                                    <li><a href="#">broccoli</a></li>
-                                                    <li><a href="#">asparagus</a></li>
-                                                    <li><a href="#">cauliflower</a></li>
-                                                    <li><a href="#">eggplant</a></li>
-                                                </ul>
+                                                {{-- @foreach ($categories as $category)
+                                                    <h5 class="megamenu-title">{{ $category->name }}</h5>
+                                                    <ul class="megamenu-list">
+                                                        @foreach ($subCategories as $subCategory)
+                                                            <li><a href="#">{{ $subCategory->name }}</a></li>
+                                                        @endforeach
+
+                                                    </ul>
+                                                @endforeach --}}
                                             </div>
                                         </div>
-                                        <div class="col">
+                                        {{-- <div class="col">
                                             <div class="megamenu-wrap">
                                                 <h5 class="megamenu-title">fruits</h5>
                                                 <ul class="megamenu-list">
@@ -276,7 +277,7 @@
                                                     <li><a href="#">pumpkin</a></li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

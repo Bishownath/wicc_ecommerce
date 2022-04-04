@@ -77,10 +77,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        return view('brands.edit')
-            ->with([
-                'brand' => $brand,
-            ]);
+        return view('brands.edit', compact('brand'));
     }
 
     /**
@@ -94,7 +91,7 @@ class BrandController extends Controller
     {
         $brand->update($request->data());
         if ($brand->image) {
-            $filepath = 'images/brands/' . $brand->image;
+            $filepath = '/images/brands/' . $brand->image;
             if ($filepath) {
                 unlink($filepath);
             }

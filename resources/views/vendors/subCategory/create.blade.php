@@ -11,18 +11,29 @@
             {{-- {!! Form::model($category, ['route' => ['vendors.subCategory.store'], 'method' => 'POST']) !!} --}}
             {!! Form::open(['route' => 'vendors.subCategory.store', 'method' => 'POST']) !!}
             @include('vendors.subCategory.form.form')
-            <div class="col-md-6">
-                <label for="category_id">Category</label>
-                {{-- {!! Form::select('category_id', $category, $category, ['class' => 'form-control']) !!} --}}
-                <select name="category_id" id="category_id" class="form-control">
-                    <option value="" selected>--Select Status--</option>
-                    @foreach ($category as $cat)
-                        {{-- {{ $cat->slug == $cat->category_id ? 'selected' : '' }} --}}
-                        <option value="{{ $cat->id }}" {{ $cat->id == $cat->category_id ? 'selected' : '' }}>
-                            {{ $cat->name }}
-                        </option>
-                    @endforeach
-                </select>
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            {!! Form::select('status', ['unavailable', 'available'], 'available', ['class' => 'form-control']) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="category_id">Category</label>
+                        {{-- {!! Form::select('category_id', $category, $category, ['class' => 'form-control']) !!} --}}
+                        <select name="category_id" id="category_id" class="form-control">
+                            <option value="" selected>--Select Status--</option>
+                            @foreach ($category as $cat)
+                                {{-- {{ $cat->slug == $cat->category_id ? 'selected' : '' }} --}}
+                                <option value="{{ $cat->id }}" {{ $cat->id == $cat->category_id ? 'selected' : '' }}>
+                                    {{ $cat->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="d-flex justify-content-center">
                 <button class="btn btn-info mt-2 ">Submit</button>
