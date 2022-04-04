@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Vendors;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubCategory\StoreRequest;
+use App\Http\Requests\SubCategory\UpdateRequest;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Exception;
@@ -77,7 +78,8 @@ class SubCategoryController extends Controller
      */
     public function edit(SubCategory $subCategory)
     {
-        //
+        $category = Category::get();
+        return view('vendors.subCategory.edit', compact('subCategory', 'category'));
     }
 
     /**
@@ -87,9 +89,12 @@ class SubCategoryController extends Controller
      * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SubCategory $subCategory)
+    public function update(UpdateRequest $request, SubCategory $subCategory)
     {
-        //
+        $subCategory->update($request->data());
+
+        Alert::toast('Updated Successfully');
+        return redirect()->route('vendors.subCategory.index');
     }
 
     /**

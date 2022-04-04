@@ -2,20 +2,10 @@
 
 namespace App\Http\Requests\SubCategory;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaseRequest;
 
-class UpdateRequest extends FormRequest
+class UpdateRequest extends BaseRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return false;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +14,20 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|min:3',
+            'slug' => 'unique:sub_categories',
+            'description' => 'required|min:3',
+        ];
+    }
+
+    public function data()
+    {
+        return [
+            'category_id' => $this->input('category_id'),
+            'vendor_id' => $this->input('vendor_id'),
+            'name' => $this->input('name'),
+            'description' => $this->input('description'),
+            'status' => $this->input('status'),
         ];
     }
 }

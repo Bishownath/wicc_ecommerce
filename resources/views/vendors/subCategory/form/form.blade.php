@@ -15,15 +15,3 @@
                 rows="5"></textarea> --}}
         </div>
     </div>
-
-    <div class="form-group">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="status">Status</label>
-                    <select name="status" id="status" class="form-control">
-                        <option value="" selected>--Select Status--</option>
-                        <option value="1">Available</option>
-                        <option value="0">Unavailable</option>
-                    </select>
-                </div>
