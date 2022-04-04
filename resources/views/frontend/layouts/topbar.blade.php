@@ -72,14 +72,7 @@
                 <div class="navbar-content">
                     <ul class="navbar-list">
                         <li class="navbar-item dropdown">
-                            <a class="navbar-link dropdown-arrow" href="#">home</a>
-                            <ul class="dropdown-position-list">
-                                <li><a href="home-grid.html">Home grid</a></li>
-                                <li><a href="index.html">Home index</a></li>
-                                <li><a href="home-classic.html">Home classic</a></li>
-                                <li><a href="home-standard.html">Home standard</a></li>
-                                <li><a href="home-category.html">Home category</a></li>
-                            </ul>
+                            <a class="navbar-link dropdown-arrow" href="{{ route('/') }}">home</a>
                         </li>
                         <li class="navbar-item dropdown-megamenu">
                             <a class="navbar-link dropdown-arrow" href="#">shop</a>
