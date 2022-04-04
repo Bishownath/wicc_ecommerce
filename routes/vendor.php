@@ -7,6 +7,7 @@ use App\Http\Controllers\Vendors\ProductController;
 use App\Http\Controllers\Vendors\Auth\LoginController;
 use App\Http\Controllers\Vendors\DashboardController;
 use App\Http\Controllers\Vendors\ImageController;
+use App\Http\Controllers\Vendors\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'vendors', 'middleware' => ['auth:vendor', 'web']], function () {
@@ -30,9 +31,20 @@ Route::group(['prefix' => 'vendors', 'middleware' => ['auth:vendor', 'web']], fu
     Route::get('/tag', [TagController::class, 'index'])->name('vendors.tags.index');
     Route::get('/tag/create', [TagController::class, 'create'])->name('vendors.tags.create');
     Route::post('/tag', [TagController::class, 'store'])->name('vendors.tags.store');
+    Route::get('/tag/{tag}', [TagController::class, 'show'])->name('vendors.tags.show');
     Route::get('/tag/{tag}/edit', [TagController::class, 'edit'])->name('vendors.tags.edit');
     Route::match(['put', 'patch'], '/tag/{tag}/update', [TagController::class, 'update'])->name('vendors.tags.update');
     Route::delete('/tag/{tag}/destroy', [TagController::class, 'destroy'])->name('vendors.tags.destroy');
+
+
+    // sub category
+    Route::get('/subCategory', [SubCategoryController::class, 'index'])->name('vendors.subCategory.index');
+    Route::get('/subCategory/create', [SubCategoryController::class, 'create'])->name('vendors.subCategory.create');
+    Route::post('/subCategory', [SubCategoryController::class, 'store'])->name('vendors.subCategory.store');
+    Route::get('/subCategory/{subCategory}', [SubCategoryController::class, 'show'])->name('vendors.subCategory.show');
+    Route::get('/subCategory/{subCategory}/edit', [SubCategoryController::class, 'edit'])->name('vendors.subCategory.edit');
+    Route::match(['put', 'patch'], '/subCategory/{subCategory}/update', [SubCategoryController::class, 'update'])->name('vendors.subCategory.update');
+    Route::delete('/subCategory/{subCategory}/destroy', [SubCategoryController::class, 'destroy'])->name('vendors.subCategory.destroy');
 });
 
 Route::group(['prefix' => 'vendors', 'as' => 'vendors.', 'namespace' => 'Vendors\\Auth'], function () {

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Brand;
+namespace App\Http\Requests\SubCategory;
 
 use App\Http\Requests\BaseRequest;
-use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
-class UpdateRequest extends BaseRequest
+class StoreRequest extends BaseRequest
 {
 
     /**
@@ -17,19 +17,19 @@ class UpdateRequest extends BaseRequest
     {
         return [
             'name' => 'required|min:3',
+            'slug' => 'unique:sub_categories',
             'description' => 'required|min:3',
-            'image' => 'required|mimes:jpeg,svg,jpg,png,gif|image',
         ];
     }
-
 
     public function data()
     {
         return [
+            'category_id' => $this->input('category_id'),
+            'vendor_id' => $this->input('vendor_id'),
             'name' => $this->input('name'),
-            'slug' => $this->input('slug'),
             'description' => $this->input('description'),
-            'image' => $this->input('image'),
+            'status' => $this->input('status'),
         ];
     }
 }

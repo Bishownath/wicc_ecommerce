@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Brand\StoreRequest;
+use App\Http\Requests\Brand\UpdateRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -76,7 +77,10 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        return view('brands.edit', compact('brand'));
+        return view('brands.edit')
+            ->with([
+                'brand' => $brand,
+            ]);
     }
 
     /**
@@ -86,9 +90,16 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand)
+    public function update(UpdateRequest $request, Brand $brand)
     {
         $brand->update($request->data());
+        if ($brand->image) {
+            $filepath = 'images/brands/' . $brand->image;
+            if ($filepath) {
+                unlink($filepath);
+            }
+            $brand->save();
+        }
         Alert::toast('Updated Successfully');
         return redirect()->route('brand.index');
     }

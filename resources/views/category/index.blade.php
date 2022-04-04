@@ -36,13 +36,14 @@
                                 <td>{{ $category->description }}</td>
                                 <td>{{ $category->status == 1 ? 'available' : 'unavailable' }}</td>
 
-                                <td><a href="{{ route('category.edit', $category->slug) }}" class="btn btn-info">Edit</a>
+                                <td><a href="{{ route('category.edit', $category->slug) }}" class="btn btn-info"><i
+                                            class="fa fa-pen"></i></a>
                                 </td>
                                 <td>
                                     <form action="{{ route('category.destroy', $category->slug) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                        <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
                                 </td>
                                 </form>
                             </tr>

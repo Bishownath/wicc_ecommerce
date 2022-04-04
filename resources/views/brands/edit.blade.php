@@ -1,7 +1,7 @@
 @extends('admin.dashboard')
 
 @section('content')
-    {!! Form::model($brand, ['route' => ['brand.update', $brand->slug], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+    {!! Form::model($brand, ['route' => ['brand.update', $brand->slug], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
     @include('brands.form.form')
 
     <div class="form-group">

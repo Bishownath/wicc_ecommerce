@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+// use App\Http\Requests\Brand\UpdateRequest;
 use App\Http\Requests\Tag\StoreRequest;
+use App\Http\Requests\Tag\UpdateRequest;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -64,7 +66,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('vendors.tags.edit', compact('tag'));
     }
 
     /**
@@ -74,9 +76,12 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(UpdateRequest $request, Tag $tag)
     {
-        //
+        $tag->update($request->data());
+
+        Alert::toast('Updated Successfully');
+        return redirect()->route('vendors.tags.index');
     }
 
     /**
